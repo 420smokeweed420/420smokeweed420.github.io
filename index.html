@@ -1,0 +1,631 @@
+<html lang="en">
+
+<head>
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    <meta charset="UTF-8">
+    <title>w33d.org</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="">
+
+    <link rel="icon" href="favicon.png">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $("#loader-wrapper").fadeOut(700);
+        });
+    </script>
+
+    <script language="Javascript">
+        button1on = new Image();
+        button1on.src = "skullbubblyon.png";
+        button1off = new Image();
+        button1off.src = "skullclean.png";
+        button1hi = new Image();
+        button1hi.src = "skullbubbly.png";
+
+        function img_act(imgName) {
+            imgOn = eval(imgName + "on.src");
+            document[imgName].src = imgOn;
+            
+            setTimeout(function() {
+                resetScript();
+            }, 1000); 
+        }
+
+        function img_inact(imgName) {
+            imgOff = eval(imgName + "off.src");
+            document[imgName].src = imgOff;
+        }
+
+        function img_hi(imgName) {
+            imgHi = eval(imgName + "hi.src");
+            document[imgName].src = imgHi;
+        }
+        
+        function resetScript() {
+            document['button1'].src = button1hi.src;
+        }
+    </script>
+
+    <style>
+        #loader-wrapper {
+            background-color: #000000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .loader-img {
+            width: 150px;
+            height: auto;
+            margin-top: calc(50vh - 75px);
+        }
+
+        #toggleButton {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #2acc2a;
+            color: #000000;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10000; /* Ensure button is above other content */
+        }
+
+        #toggleButton:hover {
+            background-color: #1f9d1f;
+        }
+    </style>
+
+    <script>
+        let contentVisible = true;
+        function toggleVisibility() {
+            const main = document.querySelector('main');
+            const rightSidebar = document.getElementById('rightSidebar');
+            const leftSidebar = document.getElementById('leftSidebar');
+            const footer = document.getElementById('footer');
+            
+            if (contentVisible) {
+                main.style.display = 'none';
+                rightSidebar.style.display = 'none';
+                leftSidebar.style.display = 'none';
+                footer.style.display = 'none';
+                document.getElementById('toggleButton').innerText = 'Show Content';
+            } else {
+                main.style.display = 'block';
+                rightSidebar.style.display = 'block';
+                leftSidebar.style.display = 'block';
+                footer.style.display = 'block';
+                document.getElementById('toggleButton').innerText = 'Hide Content';
+            }
+            contentVisible = !contentVisible;
+        }
+    </script>
+    
+    <style>
+        #loader-wrapper h1 {
+            text-decoration: none;
+        }
+        
+        aside img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px; 
+            overflow: hidden;
+        }
+
+        aside img:hover {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            border: #2acc2a dotted 0.1px;
+            overflow: hidden;
+        }
+        
+        :root {
+            --header-image: url('https://w33d.org/w33dbanner6.png');
+            --body-bg-image: url('https://web.archive.org/web/20090901210704im_/http://geocities.com/ozproductions2002/animated_weed.gif');
+            --content: #444444;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            background-color: #000000;
+            background-size: 65px;
+            background-image: var(--body-bg-image); 
+            color: #f0f0f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        
+        #container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .loader h1 {
+            text-decoration: none;
+        }
+        
+        #container a {
+            color: #2acc2a;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        #header {
+            width: 100%;
+            height: 150px;
+            background-image: var(--header-image);
+            background-size: 100%;
+        }
+        
+        #navbar {
+            height: 40px;
+            background-color: #2acc2a;
+        }
+
+        #navbar ul {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            justify-content: space-evenly;
+        }
+
+        #navbar li {
+            padding-top: 10px;
+        }
+        
+        #navbar li a {
+            font-weight: 800;
+            text-decoration: none;
+        }
+        
+        #navbar li a:hover {
+            color: #bdbdbd;
+            text-decoration: underline;
+        }
+        
+        #flex {
+            display: flex;
+        }
+        
+        aside {
+            background-color: #000000;
+            width: 200px;
+            padding: 20px;
+            font-size: smaller;
+        }
+
+        main {
+            background-color: #000000;
+            flex: 1;
+            padding: 20px;
+            order: 2;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #2acc2a;
+            border-radius: 10px;
+            border: 3px solid #000;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #1f9d1f;
+        }
+        
+        footer {
+            background-image: url('https://web.archive.org/web/20090727170708/http://www.geocities.com/nine_t_three/images/weed/pics/firepotbar.gif');
+            background-repeat: repeat-x;
+            background-size: auto;
+            background-position: center center;
+            border: #2acc2a dotted 0.1px;
+            text-shadow: #000000 1px 1px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        ol li {
+            padding: 5px;
+        }
+        
+        h1, h2, h3 {
+            color: #2acc2a;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        h1 {
+            font-size: 20px;
+            text-shadow: #ffffff;
+            text-decoration: underline #2acc2a;
+        }
+
+        strong {
+            color: #888888;
+        }
+        
+        .box {
+            overflow: hidden;
+            background-color: #000000;
+            border: 1px solid #ffffff;
+            padding: 10px;
+        }
+
+        #flex {
+            display: flex;
+        }
+        
+        aside {
+            background-color: #000000;
+            width: 200px;
+            padding: 20px;
+            font-size: smaller;
+            flex: 0 0 200px;
+        }
+        
+        #leftSidebar {
+            order: 1; /* This is corrected based on the provided code */
+        }
+        
+        main {
+            background-color: #000000;
+            flex: 1;
+            padding: 20px;
+            order: 2; /* This is corrected based on the provided code */
+        }
+        
+        #rightSidebar {
+            order: 3; /* This is corrected based on the provided code */
+        }
+        
+        @media only screen and (max-width: 800px) {
+            #flex {
+                flex-wrap: wrap;
+            }
+            aside {
+                width: 100%;
+                flex: 0 0 auto;
+            }
+            main {
+                order: 1;
+            }
+            #leftSidebar {
+                order: 2;
+            }
+            #rightSidebar {
+                order: 3;
+            }
+            #navbar ul {
+                flex-wrap: wrap;
+            }
+        }
+        
+        #app {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        #app * {
+            pointer-events: all;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app" style="height: 100vh"></div>
+    <button id="toggleButton" onclick="toggleVisibility()">Hide Content</button>
+    <div id="loader-wrapper" style="display: none;">
+        <img src="https://files.catbox.moe/usznjx.gif" alt="Loading..." class="loader-img">
+        <h1>loading...</h1>
+    </div>
+
+    <div id="container">
+        <div id="header"></div>
+        <div id="headerArea">
+        </div>
+
+        <div id="flex">
+            <aside id="leftSidebar" style="background-color: rgba(0, 0, 0, 0.5);">
+                <div class="box">
+                    <img src="https://web.archive.org/web/20090820043237/http://www.geocities.com/motsumi_76/weedspin.gif" alt="GIF 1">
+                    <img src="https://web.archive.org/web/20091020184303/http://www.geocities.com/eastkillah/marijuana2.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090829055705/http://geocities.com/medicalmarijuana2003/Animations/leafsmokingweedtr.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20000919044733/http://www.geocities.com:80/SunsetStrip/Gala/1025/weedcrck.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091021101327/http://www.geocities.com/darkangel21859/weed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090902184413/http://geocities.com/miss420princess/weednow.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091024054531/http://www.geocities.com/blueeyes6t96t9/weed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027060957/http://www.geocities.com/phnyxrayn/weedmexplore.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022085309/http://www.geocities.com/three11phreaky/weedsmokeme.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027060906/http://www.geocities.com/phnyxrayn/weedspinbong.gif" alt="GIF 2">
+                    <img src="https://media.tenor.com/FHFBIMjKtQkAAAAM/weed-420.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090904012227/http://geocities.com/miss420princess/weedpot.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091025005336im_/http://www.geocities.com/ohyohohello/weed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027040811/http://www.geocities.com/nine_t_three/images/weed/pics/c3.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027055110/http://www.geocities.com/jjsenior/weed/bong/joint.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20060210103417/http://www.geocities.com:80/trinibabybwoy/bloodweedleaf.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090902093045/http://geocities.com/trustmechris1/WeedPics.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091026003532im_/http://www.geocities.com/illweedhead/anismoke.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022084218im_/http://www.geocities.com/ladylotus13/weedhemp.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20041108203700/http://www.geocities.com:80/josue_707/weed.gif" alt="GIF 2">
+                    <img src="https://i.gifer.com/5Mz9.gif" alt="GIF 2">
+                    <img src="https://i.gifer.com/W5fP.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091023063739/http://www.geocities.com/Area51/Dunes/4604/weed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091024223901im_/http://geocities.com/chugsyuk/weedjail.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091026193916/http://geocities.com/Pipeline/Ridge/9186/worldweed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027125710/http://geocities.com/CapitolHill/Rotunda/4297/pot.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022054558/http://www.geocities.com/potproducts/skullne.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090829043947if_/http://www.geocities.com/potproducts/4201.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090830091131if_/http://geocities.com/RainForest/Wetlands/6042/needweed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022054605if_/http://www.geocities.com/potproducts/weedball2.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090830160515im_/http://geocities.com/a_weed_heaven/onlyul6.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027020304if_/http://mx.geocities.com/llll_llll_biker_fox_llll_llll/images/pot.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090820064333/http://geocities.com/medicalmarijuana2003/Pictures/marijuanasitetitle.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091021092751/http://www.geocities.com/amberdextress2000/legalizemarijuana.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091019165519/http://www.geocities.com/revcannibus/531803-marijuana.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027052206/http://geocities.com/marijuanapower/1-1-leafani.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027061558/http://www.geocities.com/fran6_13/marijuanaX.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090728052649/http://uk.geocities.com/marijuanamania/screamfingerjoint.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091021181335im_/http://www.geocities.com/kgbloose/g420spiningred6.gif" alt="GIF 2">
+                </div>
+            </aside>
+            <main style="background-color: rgba(0, 0, 0, 0.5);">
+                <h2>welcome to w33d.org</h2>
+                <h1><a href="https://web.archive.org/web/20050214003007im_/http://burnt.netdojo.com/vbong/vbong.html">Virtual bong - click 2 smoke</a></h1>
+                <a onmouseover="window.status='Take Another!'; img_hi('button1'); return true" onclick="window.status='Take another!'; img_act('button1'); return true" onmouseout="window.status=''; img_inact('button1'); return true">
+                    <img src="https://w33d.org/skullclean.png" style="border=0" name="button1" alt="get netscape eh">
+                </a>
+                <h1><a href="https://web.archive.org/web/20091026003532/http://geocities.com/illweedhead/POTtest.html">..........ARE YOU A POTHEAD?..........</a></h1>
+                <p>
+                </p>
+                <ol>
+                    <li>if you set your clock to 4:20 ... then you're a pothead!</li>
+                    <li>if a say i forgot more than a couple of times a day ... then you're probably a pothead!</li>
+                    <li>if you own a bong collection thats worth more than your car... then you too are a pothead!</li>
+                    <li>if you have to smoke before after and between meals... then theres no dout you're a pothead!</li>
+                    <li>if you find your self late for every thing because you needed to smoke one more joint... then you're definitly a pothead!</li>
+                    <li>if some one says "hi" and your reply is hell yeah!... you're most likely a pothead!</li>
+                    <li>if you have seen all the cheech and chong movies than you're a true pothead!</li>
+                    <li>if you have ever named your pipe ... then you're an all out pothead!</li>
+                    <li>if you spend your time in front of your computer looking at weed sites ... then you're a pothead</li>
+                    <li>if you answered yes to any of the above...</li>
+                </ol>
+                then congratulations you're a PoTHeAD!!
+                <p></p>
+                <br>
+                <h1><a href="https://web.archive.org/web/20090810061240/http://geocities.com/los_marijuanos//Pony_Boy.html">
+                        Los Marijuanos</a>
+                </h1>
+                <p>
+                    You got that shii right if you aint knowin i dont know what you been smokin the Los Marijuanos fro Chi Town been creapin fool you been to a weed fest as of late why didnt you holla at Pony Boy well you found the Underground Now so book mark the site ctrl+d this site is for the hard core weed heads ya dig
+                </p>
+            </main>
+
+            <aside id="rightSidebar" style="background-color: rgba(0, 0, 0, 0.5);">
+                <div class="box">
+                    <img src="https://web.archive.org/web/20091027040810/http://www.geocities.com/nine_t_three/images/weed/pics/justdoit.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091025124719im_/http://www.geocities.com/icedink2001us/weed_symbol.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022084228/http://www.geocities.com/ladylotus13/weedclock.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022084229/http://www.geocities.com/ladylotus13/weeddragon.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027115223/http://geocities.com/MINA4GETMIDUREX/weed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091023044414/http://www.geocities.com/zoedickenson/Weedbush.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022084218im_/http://www.geocities.com/ladylotus13/weedgot.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027071810/http://geocities.com/protox420/tabs/walkingweed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20040307055123/http://www.geocities.com:80/a_weed_heaven/420_10.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091025005336im_/http://www.geocities.com/ohyohohello/weed9.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022085950/http://www.geocities.com/ladylotus13/weedsitehigh.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090830160515/http://geocities.com/a_weed_heaven/anileaf.gif" alt="GIF 1">
+                    <img src="https://web.archive.org/web/20090829134702/http://geocities.com/cajunbabynla/colorfulweed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20040317043658/http://www.geocities.com:80/a_weed_heaven/WEEDHEAVEN.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20031025014532/http://www.geocities.com:80/x0x_dis_me_brit_undacova_x0x/smoke_weed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20040204114833/http://www.geocities.com:80/a_weed_heaven/MDONDRGS.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091026063205/http://www.geocities.com/thug_live2001/weed.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027040808/http://www.geocities.com/nine_t_three/images/weed/pics/stoned_e0.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090226204802/http://geocities.com/dallas_j420/freeweed.gif" alt="GIF 2">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.gifer.com%2FZ5nN.gif&amp;f=1&amp;nofb=1&amp;ipt=add655adf782c51ab9f61d788d2e10ac52b7147b102f129f5dba7edc6ecdba86&amp;ipo=images" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022043200if_/http://www.geocities.com/potproducts/420t.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091025015944/http://www.geocities.com/phnyxrayn/weedsun.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090831141948/http://www.geocities.com/flywgurl99/MarijuanaMadness.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20040203044230/http://www.geocities.com:80/a_weed_heaven/budshow.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090830160515/http://geocities.com/a_weed_heaven/420swirl.gif" alt="GIF 2">
+                    <img src="https://64.media.tumblr.com/tumblr_m50hufXSXU1qap9uuo1_500.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090728002647/http://www.geocities.com/gweedier/dancinghat.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20001009092740/http://geocities.com:80/SunsetStrip/Disco/5162/weedban.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091022183849/http://www.geocities.com/potproducts/420flaming.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090902161040if_/http://geocities.com/iponestahi/ilovepotspin.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090829043947if_/http://www.geocities.com/potproducts/bong2.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027164308if_/http://geocities.com/tal-tal/Images/pot.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027002348/http://uk.geocities.com/codgins_assulym/nurple-marijuana.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091026131659/http://geocities.com/marijuana_party/images/leafspinl.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20091027143351/http://geocities.com/csis16/aimphuck_marijuana.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20020317212604/http://geocities.com:80/optimization_marijuana/cannabis/smile2eyes.gif" alt="GIF 2">
+                    <img src="https://web.archive.org/web/20090902155126/http://geocities.com/theraveparty/marijuanafacts.gif" alt="GIF 2">
+                </div>
+            </aside>
+        </div>
+        <footer id="footer"><small>© <script>
+                    document.write(new Date().getFullYear())
+                </script> w33d.org All Rights Reserved.</small></footer>
+    </div>
+
+    <script src="https://unpkg.com/webamp@1.5.0/built/webamp.bundle.min.js"></script>
+    <script src="https://unpkg.com/butterchurn@2.6.7/lib/butterchurn.min.js"></script>
+    <script src="https://unpkg.com/butterchurn-presets@2.4.7/lib/butterchurnPresets.min.js"></script>
+    <script>
+        const Webamp = window.Webamp;
+        const webamp = new Webamp({
+            availableSkins: [{
+                url: "https://files.catbox.moe/7prn77.wsz",
+                name: "John_Wilcox",
+            }, {
+                url: "https://files.catbox.moe/6u02sg.wsz",
+                name: "Weed_Amp_bulb_4.wsz",
+            }, ],
+            initialSkin: {
+                url: "https://files.catbox.moe/7prn77.wsz",
+                name: "John_Wilcox.wsz",
+            },
+            initialTracks: [{
+                metaData: {
+                    artist: "A Conflict Between Earth Mother and the Technogaia",
+                    title: "Kaizo Slumber",
+                },
+                url: "https://files.catbox.moe/eejwpd.mp3",
+                duration: 2.2,
+            }, {
+                metaData: {
+                    artist: "Liebe in Stereo",
+                    title: "Baby B3ns",
+                },
+                url: "https://files.catbox.moe/mdgpz7.mp3",
+                duration: 3.1,
+            }, {
+                metaData: {
+                    artist: "Ya Soshla S Uma.mp3",
+                    title: "User2222",
+                },
+                url: "https://files.catbox.moe/pflvav.mp3",
+                duration: 4.39,
+            }, {
+                metaData: {
+                    artist: "NOTION feat. Carrie Baxter",
+                    title: "FOUND LOVE",
+                },
+                url: "https://files.catbox.moe/qw5u76.mp3",
+                duration: 2.16,
+            }, {
+                metaData: {
+                    artist: "Virtual Beauty",
+                    title: "NUMBPROMISES",
+                },
+                url: "https://files.catbox.moe/4mdl0a.mp3",
+                duration: 2.53,
+            }, {
+                metaData: {
+                    artist: "lucidbeatz",
+                    title: "with u",
+                },
+                url: "https://files.catbox.moe/3y7gap.mp3",
+                duration: 1.51,
+            }, {
+                metaData: {
+                    artist: "hanfeezy",
+                    title: "ALL YOU EVER WANTED",
+                },
+                url: "https://files.catbox.moe/h4tvoq.mp3",
+                duration: 1.04,
+            }, {
+                metaData: {
+                    artist: "Big Air",
+                    title: "Ecco2k",
+                },
+                url: "https://files.catbox.moe/b2h6te.mp3",
+                duration: 3,
+            }, {
+                metaData: {
+                    artist: "Blank Banshee",
+                    title: "Metal Rain",
+                },
+                url: "https://files.catbox.moe/bcfl41.mp3",
+                duration: 2.322286,
+            }, ],
+            __butterchurnOptions: {
+                importButterchurn: () => Promise.resolve(window.butterchurn),
+                getPresets: () => {
+                    const presets = window.butterchurnPresets.getPresets();
+                    return Object.keys(presets).map((name) => {
+                        return {
+                            name,
+                            butterchurnPresetObject: presets[name],
+                        };
+                    });
+                },
+                butterchurnOpen: true,
+            },
+            __initialWindowLayout: {
+                main: {
+                    position: {
+                        x: -900,
+                        y: -250
+                    }
+                },
+                equalizer: {
+                    position: {
+                        x: -900,
+                        y: -134
+                    }
+                },
+                playlist: {
+                    position: {
+                        x: -900,
+                        y: -18
+                    },
+                    size: [0, 2]
+                },
+                milkdrop: {
+                    position: {
+                        x: 400,
+                        y: -100
+                    },
+                    size: [2, 10]
+                },
+            }
+        });
+
+        webamp.renderWhenReady(document.getElementById("app")).then(() => {
+            document.querySelectorAll('.gen-window').forEach((window) => {
+                window.style.display = 'none';
+            });
+
+            const originalPlayMethod = webamp.media.play.bind(webamp.media);
+
+            webamp.media.play = function() {
+                originalPlayMethod();
+
+                document.getElementById('rightSidebar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                document.getElementById('leftSidebar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                document.querySelector('main').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+
+                document.querySelectorAll('.gen-window').forEach((window) => {
+                    window.style.display = 'block';
+                });
+
+                console.log('Play button pressed, enabling MilkDrop desktop mode...');
+                webamp.store.dispatch({
+                    type: 'SET_MILKDROP_DESKTOP',
+                    enabled: true
+                });
+            };
+        });
+    </script>
+</body>
+
+</html>
